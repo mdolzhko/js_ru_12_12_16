@@ -1,34 +1,17 @@
 import React, { Component } from 'react'
-
 import Comments from './Comments'
 
 
 export default class Article extends Component {
-    state = {
-        isOpen: false
-    }
-
-/*
-    constructor() {
-        super()
-        this.state = {
-            isOpen: false
-        }
-    }
-*/
-
-    render() {
-        const { article } = this.props
-        return (
-            <div>
-                <h3
-                    onClick = {this.toggleOpen}
-                    style={{ cursor: 'pointer' }}>
-                    {article.title}</h3>
-                {this.getBody()}
-            </div>
-        )
-    }
+    /*
+     constructor() {
+     super()
+     this.state = {
+     isOpen: false
+     }
+     }
+     */
+    state = { isOpen: false }
 
     toggleOpen = () => {
         this.setState({
@@ -36,13 +19,31 @@ export default class Article extends Component {
         })
     }
 
-    getBody() {
+    getBody( article ) {
         if (!this.state.isOpen) return null
         return (
             <section>
-                {this.props.article.text}
-                <Comments />
+                { this.props.article.text }
+                <Comments
+                    articleId = { article.id }
+                    articleComments = { article.comments }/>
             </section>
+        )
+    }
+
+    render() {
+        const { article } = this.props
+        return (
+            <div>
+                <h3 style={{ cursor: 'pointer' }}
+                    onClick = {this.toggleOpen} >
+
+                    { article.title }
+                </h3>
+                <div>
+                    { this.getBody( article ) }
+                </div>
+            </div>
         )
     }
 }

@@ -8,24 +8,18 @@ import Article from './Article'
 
 class ArticleList extends Component {
 
-    constructor(props){
-        super(props);
-
-        this.state = {
+        state = {
             startDate: null,
             endDate:null
         }
 
-        this.startDateFilter = this.startDateFilter.bind(this);
-        this.endDateFilter = this.endDateFilter.bind(this);
-    }
 
-    startDateFilter( start ){
+    startDateFilter = start =>
         this.setState({ startDate: start })
-    }
-    endDateFilter( end ){
+
+    endDateFilter = end =>
         this.setState({ endDate: end })
-    }
+
 
     render() {
 

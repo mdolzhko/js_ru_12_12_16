@@ -29,7 +29,7 @@ export default class DateFilter extends Component {
         this.props.endDateFilter(null)
     }
     render() {
-        const { startDate, endDate } = this.state;
+        const { startDate, endDate } = this.state
 
         return (
 
@@ -65,6 +65,9 @@ export default class DateFilter extends Component {
     }
 }
 
-DateFilter.PropTypes = { }
+DateFilter.PropTypes = {
+    startDateFilter: PropTypes.func,
+    endDateFilter: PropTypes.func
+}
 
 DateFilter.defaultProps = { }

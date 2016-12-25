@@ -31,7 +31,7 @@ class ArticleList extends Component {
 
         const {articles, isOpenItem, toggleOpenItem} = this.props
 
-        const filterdArticles = articles.filter( article => {
+        const filteredArticles = articles.filter( article => {
                 if( !this.state.startDate && !this.state.endDate ) {
                     return true
                 }
@@ -51,7 +51,7 @@ class ArticleList extends Component {
                 }
         })
 
-        const articleElements = filterdArticles.map( article => <li key = {article.id}>
+        const articleElements = filteredArticles.map( article => <li key = {article.id}>
 
             { moment(article.date).format('L') }
                 <Article
@@ -80,9 +80,12 @@ class ArticleList extends Component {
 export default toggleArticles(ArticleList)
 
 Article.PropTypes = {
-    articles: PropTypes.object
+    articles: PropTypes.object,
+    isOpenItem: PropTypes.bool,
+    toggleOpenItem: PropTypes.func
 }
 
 Article.defaultProps = {
-    articles: {}
+    articles: {},
+    isOpenItem: false
 }
